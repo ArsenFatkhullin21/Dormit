@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заселить человека</title>
+</head>
+<body>
+
+<h2>Данные студента</h2>
+<hr>
+
+
+
+<form th:method="POST" th:action="@{/people}" th:object="${person}">
+
+    <label for="name">Ввидите ФИО: </label>
+    <input type="text" th:field="*{fio}" id="name" size="40"/>
+    <div style="color: darkred" th:if="${#fields.hasErrors('fio')}" th:errors="*{fio}">FIO error</div>
+    <br>
+    <label for="room">Ввидите комнту : </label>
+    <select th:object="${person}" th:field="*{room.id}" id="room">
+        <option th:each="room : ${rooms}" th:value="${room.getId()}" th:text="${room.getRoomnumber()}"></option>
+    </select>
+    <br>
+    <label for="faculty">Ввидите факультет:</label>
+    <input type="text" th:field="*{faculty}" id="faculty"/>
+    <div style="color: darkred" th:if="${#fields.hasErrors('faculty')}" th:errors="*{faculty}">faculty error</div>
+    <br>
+    <label for="groupp">Ввидите группу:</label>
+    <input type="text" th:field="*{groupp}" id="groupp"/>
+    <div style="color: darkred" th:if="${#fields.hasErrors('groupp')}" th:errors="*{groupp}">groupp error</div>
+    <br>
+    <label>Ввидите форму обучения:</label>
+    <div>
+        <input type="radio" id="payment1" name="payment" value="Б" />
+        <label for="payment1">Бюджет</label>
+
+        <input type="radio" id="payment2" name="payment" value="К" />
+        <label for="payment2">Комерцмя</label>
+    </div>
+    <div style="color: darkred" th:if="${#fields.hasErrors('payment')}" th:errors="*{payment}">payment error</div>
+
+    <br>
+    <label>Б/К/М:</label>
+    <div>
+        <input type="radio" id="education1" name="education" value="Б" />
+        <label for="education1">Бакалавриат</label>
+
+        <input type="radio" id="education2" name="education" value="К" />
+        <label for="education2">Специалитет</label>
+
+        <input type="radio" id="education3" name="education" value="М" />
+        <label for="education3">Магистратура</label>
+    </div>
+    <div style="color: darkred" th:if="${#fields.hasErrors('education')}" th:errors="*{education}">education error</div>
+
+    <br>
+    <label for="country">Ввидите страну:</label>
+    <input type="text" th:field="*{country}" id="country"/>
+    <div style="color: darkred" th:if="${#fields.hasErrors('country')}" th:errors="*{country}">country error</div>
+    <br>
+    <label for="phoneNumber">Ввидите номер телефона:</label>
+    <input type="text" th:field="*{phoneNumber}" id="phoneNumber"/>
+    <div style="color: darkred" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">phoneNumber error</div>
+
+    <br>
+    <label for="dateOfBirth">Ввидите дату рождения:</label>
+    <input type="text" th:field="*{dateOfBirth}" id="dateOfBirth"/>
+    <div style="color: darkred" th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}">dateOfBirth error</div>
+
+    <br>
+    <label for="address">Ввидите адрес:</label>
+    <input type="text" th:field="*{address}" id="address"/>
+    <div style="color: darkred" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">address error</div>
+
+    <br>
+
+    <br>
+    <input type="submit" value="Создать!"/>
+</form>
+
+</body>
+</html>

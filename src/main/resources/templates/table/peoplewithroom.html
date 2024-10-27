@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Все люди</title>
+</head>
+<body>
+<h1>Общежитие №7</h1>
+<hr>
+<a th:href="@{/people}">Cтуденты</a>  <a th:href="@{/room}">Комнаты</a>   <a th:href="@{/table}">Таблица</a>
+<hr>
+
+<table border="1">
+    <tr>
+        <th>Комната</th>
+        <th>ФИО</th>
+        <th>Факультет</th>
+        <th>Группа</th>
+        <th>Бюджет/Комерция</th>
+        <th>Б/С/М</th>
+        <th>Страна</th>
+        <th>Номер телефона</th>
+        <th>Дата Рождения</th>
+        <th>Адрес</th>
+    </tr>
+
+    <tr th:each="person : ${people}">
+        <td th:text="${person.room != null} ? ${person.room.roomnumber} : 'Комната не назначена!'"></td>
+        <td>
+            <a th:href="@{/people/{id}(id = ${person.getId()})}" th:text="${person.getFio()}"></a>
+        </td>
+
+        <td th:text="${person.getFaculty()}"></td>
+        <td th:text="${person.getGroupp()}"></td>
+        <td th:text="${person.getPayment()}"></td>
+        <td th:text="${person.getEducation()}"></td>
+        <td th:text="${person.getCountry()}"></td>
+        <td th:text="${person.getPhoneNumber()}"></td>
+        <td th:text="${person.getDateOfBirth()}"></td>
+        <td th:text="${person.getAddress()}"></td>
+
+
+    </tr>
+</table>
+
+</body>
+</html>

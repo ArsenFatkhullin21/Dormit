@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+</head>
+<body>
+<h1>Общежитие №7</h1>
+<hr>
+<a th:href="@{/people}">Cтуденты</a>  <a th:href="@{/room}">Комнаты</a>   <a th:href="@{/table}">Таблица</a>
+<hr>
+
+<br>
+
+
+<table border="1">
+    <tr>
+        <th>Комната</th>
+        <th>Количесво свободных мест</th>
+    </tr>
+
+    <tr th:each="room : ${rooms}">
+        <td>
+            <a th:href="@{/room/{number}(number=${room.getRoom().getRoomnumber()})}" th:text="${room.getRoom().getRoomnumber()}"></a>
+        </td>
+        <td >
+            <div th:text="${room.getRoom().getCountplace()}"></div>
+        </td>
+
+
+    </tr>
+</table>
+
+</body>
+</html>

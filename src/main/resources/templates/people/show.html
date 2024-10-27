@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Жилец</title>
+</head>
+<body>
+
+<p th:text="'ФИО: '+ ${person.getFio()}">Value</p>
+
+<label th:text="'Комната: '"></label>
+<span th:text="${person.room != null} ? ${person.room.roomnumber} : 'Комната не назначена!'">someValue</span>
+<p th:text="'Факультет: '+ ${person.getFaculty()}">Value</p>
+<p th:text="'Группа: ' + ${person.getGroupp()}">Value</p>
+<p th:text="'Бюджет/Комерция: '+ ${person.getPayment()}">Value</p>
+<p th:text="'Б/С/М: '+ ${person.getEducation()}">Value</p>
+<p th:text="'Дата рождения: ' + ${person.getDateOfBirth()}">Value</p>
+<p th:text="'Номер: ' + ${person.getPhoneNumber()}">Value</p>
+<p th:text="'Страна: ' + ${person.getCountry()}">Value</p>
+<p th:text="'Адрес: ' + ${person.getAddress()}">Value</p>
+
+<hr>
+<form th:method="GET" th:action="@{/people/{id}/edit(id=${person.getId()})}" th:object="${person}">
+    <input type="submit" value="Редактировать!"/>
+</form>
+
+<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}" th:object="${person}">
+    <input type="submit" value="Удалить!"/>
+</form>
+
+</body>
+</html>

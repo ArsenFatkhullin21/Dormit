@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Комнта</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>Комната</td>
+        <td>ФИО</td>
+    </tr>
+    <tr th:each="r : ${room}">
+        <td>
+            <a th:href="@{/room/{number}(number=${r.getRoom().getRoomnumber()})}" th:text="${r.getRoom().getRoomnumber()}"></a>
+        </td>
+
+        <td>
+            <a th:href="@{/people/{id}(id=${r.getId()})}" th:text="${r.getFio()}"></a>
+        </td>
+    </tr>
+
+</table>
+</body>
+</html>
